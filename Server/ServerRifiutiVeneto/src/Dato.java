@@ -1,4 +1,4 @@
-public class Dato {
+public class Dato implements Comparable{
     private int anno;
     private String provincia;
     private String tipoRifiuto;
@@ -47,5 +47,11 @@ public class Dato {
     public String toString() {
         return "Dato anno: " + anno +"provincia: " + provincia + "\n" +
                 "Tipo rifiuto: " + tipoRifiuto + "quantità rifiuto:" + quantità;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Dato dato = (Dato) o;
+        return this.provincia.compareToIgnoreCase(dato.getProvincia());
     }
 }
