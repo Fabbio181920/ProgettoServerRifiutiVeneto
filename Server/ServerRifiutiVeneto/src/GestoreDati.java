@@ -18,7 +18,7 @@ public class GestoreDati {
                 oggetto = reader.nextLine();
                 if(count >0) {
                     String arrDati[] = oggetto.split(";");
-                    this.dati.add(new Dato(Integer.parseInt(arrDati[0]),arrDati[1],arrDati[2], Double.parseDouble(arrDati[3])));
+                    this.dati.add(new Dato(Integer.parseInt(arrDati[0]),arrDati[1],arrDati[2], Float.parseFloat(arrDati[3])));
                 }
                 count++;
             }
@@ -36,8 +36,9 @@ public class GestoreDati {
         return "ERROR: riga non trovata";
     }
 
+    //
     public String provinciaRifiutiAnno(int anno){
-        double quantità = 0;
+        float quantità = 0;
         String provincia = "";
         for(Dato dato:dati){
             if(dato.getAnno() == anno) {
@@ -47,14 +48,17 @@ public class GestoreDati {
                 }
             }
         }
-        return "La provincia con più rifiuti prodotti nell'anno: "+anno+" è: "+provincia;
+        if(quantità== 0){
+            return "Anno non valido";
+        }
+        return "La provincia con piu rifiuti prodotti nell'anno: "+anno+" e: "+provincia;
     }
-
-    public String tipoRifiutiProdotti(){
+//
+    public String rifiutiProdotti(){
         String pericolosi = "pericolosi";
         String specialiNp = "speciali np";
-        double iPericolosi = 0;
-        double iSpeciali = 0;
+        float iPericolosi = 0;
+        float iSpeciali = 0;
         for(Dato dato: dati){
             if(dato.getTipoRifiuto().equalsIgnoreCase(pericolosi)){
                 iPericolosi += dato.getQuantità();
@@ -62,58 +66,58 @@ public class GestoreDati {
                iSpeciali += dato.getQuantità();
             }
         }
-        if(iSpeciali > iPericolosi){
-            return "La regione veneto produce più rifiuti di tipo: " +specialiNp;
-        }
-        return "La regione veneto produce più rifiuti di tipo: "+pericolosi;
-    }
 
-    public String tipoRifiutiProdottiAnno(int anno){
+        return "La regione veneto in 10 anni ha prodotto "+iPericolosi+" tonnellate di rifiuti pericolosi\n" +
+                "e " + iSpeciali+" tonnellate di rifiuti speciali";
+    }
+//
+    public String rifiutiProdottiAnno(int anno){
         String pericolosi = "pericolosi";
         String specialiNp = "speciali np";
-        double iPericolosi = 0;
-        double iSpeciali = 0;
+        float iPericolosi = 0;
+        float iSpeciali = 0;
         for(Dato dato: dati){
             if(dato.getAnno() == anno){
                 if(dato.getTipoRifiuto().equalsIgnoreCase(pericolosi)){
+
                     iPericolosi += dato.getQuantità();
                 }else{
                     iSpeciali += dato.getQuantità();
+
                 }
             }
         }
-        if(iSpeciali > iPericolosi){
-            return "Nell'anno: "+anno+" sono stati prodotti più rifiuti di tipo: " +specialiNp;
-        }
-        return "Nell'anno: "+anno+" sono stati prodotti più rifiuti di tipo: "+pericolosi;
+        return "Nell'anno: "+anno+" sono state prodotte "+iPericolosi+" tonnellate di rifiuti pericolosi\n" +
+                "e "+iSpeciali+" tonnellate di rifiuti speciali";
     }
 
-    public String tipoRifiutiProdottiProvincia (String provincia){
+    //
+    public String rifiutiProdottiProvincia (String provincia){
         String pericolosi = "pericolosi";
         String specialiNp = "speciali np";
-        double iPericolosi = 0;
-        double iSpeciali = 0;
+        float iPericolosi = 0;
+        float iSpeciali = 0;
         for(Dato dato: dati){
             if(dato.getProvincia().equalsIgnoreCase(provincia)){
                 if(dato.getTipoRifiuto().equalsIgnoreCase(pericolosi)){
+                    System.out.println(iPericolosi);
                     iPericolosi += dato.getQuantità();
                 }else{
                     iSpeciali += dato.getQuantità();
                 }
             }
         }
-        if(iSpeciali > iPericolosi){
-            return "La provincia: "+provincia+" ha prodotto più rifiuti di tipo: " +specialiNp;
-        }else if(iPericolosi == iSpeciali){
+        if(iSpeciali + iPericolosi == 0){
             return "Provincia non trovata";
-
         }
-        return "La provincia: "+provincia+" ha prodotto più rifiuti di tipo: "+pericolosi;
+        return "La provincia: "+provincia+" ha prodotto "+iPericolosi+" tonnellate di rifiuti pericolosi\n" +
+                "e "+iSpeciali+" tonnellate di rifiuti speciali";
     }
 
+    //
     public String annoRifiuti(){
-        double nRifiuti = 0;
-        double nRifiutiMax = 0;
+        float nRifiuti = 0;
+        float nRifiutiMax = 0;
         int annoMagg = 0;
         int anno = 0;
         for(Dato dato: dati){
@@ -128,14 +132,15 @@ public class GestoreDati {
                 annoMagg = anno;
             }
         }
-        return "La regione Veneto ha prodotto più rifiuti nel: "+annoMagg;
+        return "La regione Veneto ha prodotto piu rifiuti nel: "+annoMagg;
     }
 
+    //
     public String provinciaRifiuti (){
         ArrayList <Dato> tmp = dati;
         Collections.sort(tmp);
-        double nRifiuti = 0;
-        double nRifiutiMax = 0;
+        float nRifiuti = 0;
+        float nRifiutiMax = 0;
         String provincia = "";
         String provinciaMax = "";
         for(Dato dato: dati){
@@ -150,7 +155,7 @@ public class GestoreDati {
                 provinciaMax = provincia;
             }
         }
-        return "La provincia che ha prodotto più rifiuti è : "+provinciaMax;
+        return "La provincia che ha prodotto piu rifiuti e : "+provinciaMax;
     }
 
     @Override
