@@ -12,13 +12,12 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         GestoreDati dati = new GestoreDati();
-        System.out.println(dati.tipoRifiutiProdottiProvincia("belluno"));
         try (  ServerSocket serverSocket = new ServerSocket(PORT)) {
             Socket clientSocket=null;
             while(true) {
                 System.out.println("Server Socket: " + serverSocket);
                 clientSocket = serverSocket.accept();
-                Connection connessione = new Connection(clientSocket);
+                Connection connessione = new Connection(clientSocket, dati);
                 connessione.start();
             }
         }

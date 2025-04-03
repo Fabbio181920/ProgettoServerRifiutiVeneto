@@ -2,9 +2,9 @@ public class Dato implements Comparable{
     private int anno;
     private String provincia;
     private String tipoRifiuto;
-    private double quantità;
+    private float quantità;
 
-    public Dato(int anno, String provincia, String tipoRifiuto, double quantità) {
+    public Dato(int anno, String provincia, String tipoRifiuto, float quantità) {
         this.anno = anno;
         this.provincia = provincia;
         this.tipoRifiuto = tipoRifiuto;
@@ -35,11 +35,11 @@ public class Dato implements Comparable{
         this.tipoRifiuto = tipoRifiuto;
     }
 
-    public double getQuantità() {
+    public float getQuantità() {
         return quantità;
     }
 
-    public void setQuantità(double quantità) {
+    public void setQuantità(float quantità) {
         this.quantità = quantità;
     }
 
