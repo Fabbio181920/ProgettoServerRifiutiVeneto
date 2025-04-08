@@ -67,7 +67,7 @@ public class GestoreDati {
             }
         }
 
-        return "La regione veneto in 10 anni ha prodotto "+iPericolosi+" tonnellate di rifiuti pericolosi\n" +
+        return "La regione veneto in 10 anni ha prodotto "+iPericolosi+" tonnellate di rifiuti pericolosi\n\r" +
                 "e " + iSpeciali+" tonnellate di rifiuti speciali";
     }
 //
@@ -87,7 +87,7 @@ public class GestoreDati {
                 }
             }
         }
-        return "Nell'anno: "+anno+" sono state prodotte "+iPericolosi+" tonnellate di rifiuti pericolosi\n" +
+        return "Nell'anno: "+anno+" sono state prodotte "+iPericolosi+" tonnellate di rifiuti pericolosi\n\r" +
                 "e "+iSpeciali+" tonnellate di rifiuti speciali";
     }
 
@@ -110,7 +110,7 @@ public class GestoreDati {
         if(iSpeciali + iPericolosi == 0){
             return "Provincia non trovata";
         }
-        return "La provincia: "+provincia+" ha prodotto "+iPericolosi+" tonnellate di rifiuti pericolosi\n" +
+        return "La provincia: "+provincia+" ha prodotto "+iPericolosi+" tonnellate di rifiuti pericolosi\n\r" +
                 "e "+iSpeciali+" tonnellate di rifiuti speciali";
     }
 
@@ -162,7 +162,7 @@ public class GestoreDati {
     public String toString() {
         String s="";
         for(Dato dato:dati){
-            s+= dato.toString()+"\n";
+            s+= dato.toString()+"\n\r";
         }
         return s;
     }

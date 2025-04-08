@@ -45,7 +45,7 @@ public class Dato implements Comparable{
 
     @Override
     public String toString() {
-        return "Dato anno: " + anno +"provincia: " + provincia + "\n" +
+        return "Dato anno: " + anno +"provincia: " + provincia + "\n\r" +
                 "Tipo rifiuto: " + tipoRifiuto + "quantità rifiuto:" + quantità;
     }
 
