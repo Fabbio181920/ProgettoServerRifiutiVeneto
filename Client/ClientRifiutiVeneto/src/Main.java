@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class Main {
     final static String nomeServer = "localhost";
-    final static int portaServer = 4000;
+    final static int portaServer = 1050;
     public static void main(String[] args) {
         System.out.println("Connessione al server in corso...");
         JFrame menù = new JFrame("Menù");
@@ -22,9 +22,8 @@ public class Main {
 
         for (int k = 0; k < 2; k++) {
             for (int j = 0; j < 4; j++) {
-                JButton button = new JButton(opzioni[k][j]);
-
-                p.add(button);
+                Bottone bottone = new Bottone(k+j);
+                p.add(bottone);
             }
         }
         menù.add(p);
