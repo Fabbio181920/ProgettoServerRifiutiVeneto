@@ -29,14 +29,29 @@ public class Connection extends Thread{
         String str = null;
         try {
             scelta = Integer.parseInt(in.readLine());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(scelta);
+        try {
+
             switch(scelta){
                 case 0:
-                    chiudi();
                     System.exit(0);
                     break;
                 case 1:
-                    int nRiga = Integer.parseInt(in.readLine());
-                    out.println(dati.getRiga(nRiga));
+                    String rigaStr = in.readLine();
+                    if (rigaStr != null) {
+                        try {
+                            int nRiga = Integer.parseInt(rigaStr);
+                            System.out.println("Riga ricevuta dal client: " + nRiga);
+                            out.println(dati.getRiga(nRiga));
+                        } catch (NumberFormatException e) {
+                            out.println("Errore: Inserisci un numero valido per la riga!");
+                        }
+                    } else {
+                        out.println("Errore: Nessuna riga ricevuta dal client.");
+                    }
                     break;
                 case 2:
                     int anno = Integer.parseInt(in.readLine());
@@ -65,17 +80,16 @@ public class Connection extends Thread{
                 default:
                     out.println("Scelta non valida");
                     break;
-                }
-                chiudi();
+            }
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        }catch (NumberFormatException e){
-           out.println("input non valido");
-           chiudi();
+            System.err.println("Errore di comunicazione con il client: " + e.getMessage());
+        } finally {
+            chiudi();
         }
     }
 
     public void chiudi(){
+        System.out.println("chiuso");
         try {
             clientSocket.close();
             in.close();
