@@ -10,7 +10,7 @@ public class Bottone extends JButton {
     private int operazione;
 
     public Bottone(int operazione){
-        super(Integer.toString(operazione));
+        super(Main.opzioni[operazione]);
         this.operazione = operazione;
         addActionListener(e -> {
             try {
