@@ -41,17 +41,9 @@ public class Connection extends Thread{
                     break;
                 case 1:
                     String rigaStr = in.readLine();
-                    if (rigaStr != null) {
-                        try {
-                            int nRiga = Integer.parseInt(rigaStr);
-                            System.out.println("Riga ricevuta dal client: " + nRiga);
-                            out.println(dati.getRiga(nRiga));
-                        } catch (NumberFormatException e) {
-                            out.println("Errore: Inserisci un numero valido per la riga!");
-                        }
-                    } else {
-                        out.println("Errore: Nessuna riga ricevuta dal client.");
-                    }
+                    int nRiga = Integer.parseInt(rigaStr);
+                    System.out.println("Riga ricevuta dal client: " + nRiga);
+                    out.println(dati.getRiga(nRiga));
                     break;
                 case 2:
                     int anno = Integer.parseInt(in.readLine());
@@ -82,7 +74,9 @@ public class Connection extends Thread{
                     break;
             }
         } catch (IOException e) {
-            System.err.println("Errore di comunicazione con il client: " + e.getMessage());
+            System.out.println("Errore di comunicazione con il client: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            out.println("Errore: Inserisci un numero valido per la riga!");
         } finally {
             chiudi();
         }

@@ -67,7 +67,7 @@ public class GestoreDati {
             }
         }
 
-        return "La regione veneto in 10 anni ha prodotto "+iPericolosi+" tonnellate di rifiuti pericolosi\n\r" +
+        return "La regione veneto in 10 anni ha prodotto "+iPericolosi+" tonnellate di rifiuti pericolosi" +
                 "e " + iSpeciali+" tonnellate di rifiuti speciali";
     }
 //
@@ -87,7 +87,7 @@ public class GestoreDati {
                 }
             }
         }
-        return "Nell'anno: "+anno+" sono state prodotte "+iPericolosi+" tonnellate di rifiuti pericolosi\n\r" +
+        return "Nell'anno: "+anno+" sono state prodotte "+iPericolosi+" tonnellate di rifiuti pericolosi" +
                 "e "+iSpeciali+" tonnellate di rifiuti speciali";
     }
 
@@ -110,7 +110,7 @@ public class GestoreDati {
         if(iSpeciali + iPericolosi == 0){
             return "Provincia non trovata";
         }
-        return "La provincia: "+provincia+" ha prodotto "+iPericolosi+" tonnellate di rifiuti pericolosi\n\r" +
+        return "La provincia: "+provincia+" ha prodotto "+iPericolosi+" tonnellate di rifiuti pericolosi" +
                 "e "+iSpeciali+" tonnellate di rifiuti speciali";
     }
 
