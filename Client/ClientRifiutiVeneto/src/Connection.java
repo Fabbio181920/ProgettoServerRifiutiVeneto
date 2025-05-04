@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.*;
 
+/**
+ * La classe Connection estende Thread permettendo così all'utente di chiedere più informazioni al server contemporaneamente
+ */
 public class Connection extends Thread {
 
     private Socket clientSocket;
@@ -19,6 +22,11 @@ public class Connection extends Thread {
     private boolean cliccato = false;
 
 
+    /**
+     * Il metodo cotruttore crea la finestra con cui l'utente potrà interagire per fare le richieste al server
+     * @param client
+     * @param operazione
+     */
     public Connection(Socket client, int operazione) {
         this.operazione = operazione;
         this.clientSocket = client;
@@ -34,7 +42,7 @@ public class Connection extends Thread {
         }
 
         frame = new JFrame();
-        frame.setTitle(Main.opzioni[operazione]);
+        frame.setTitle(Main.titoli[operazione]);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.setSize(1000, 200);
         frame.setLayout(new BorderLayout(10, 10));
@@ -64,6 +72,9 @@ public class Connection extends Thread {
         });
     }
 
+    /**
+     * Nel metodo run viene inviata l'opzione scelta dall'utente e vengono mostrati i dati
+     */
     @Override
     public void run(){
         System.out.println(operazione);
@@ -107,6 +118,9 @@ public class Connection extends Thread {
 
     }
 
+    /**
+     * Questo metodo permette di inviare i dati letti tramite interfaccia grafica e mostrare a schermo i dati ricevuti dal server
+     */
     public void inserimento (){
         try {
             out.println(textField.getText());
@@ -115,11 +129,14 @@ public class Connection extends Thread {
             panel.add(aLabel);
         } catch (IOException ex) {
             label.setText("Errore di comunicazione col server.");
-            throw new RuntimeException(ex);
         }
         chiudi();
     }
 
+    /**
+     * Tramite questo metodo creo una JTextField con font corretto
+     * @return textField
+     */
     public JTextField createJTextField() {
         JTextField textField = new JTextField(10);
 
@@ -129,14 +146,18 @@ public class Connection extends Thread {
         return textField;
     }
 
+    /**
+     * Chiusura del socket una volta terminata la comunicazione
+     */
     public void chiudi(){
         try {
             clientSocket.close();
             in.close();
             out.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Errore di comunicazione");
         }
+        System.out.println("Connessione chiusa");
     }
 
 }

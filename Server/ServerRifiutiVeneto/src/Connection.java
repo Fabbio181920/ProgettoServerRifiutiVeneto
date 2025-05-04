@@ -1,12 +1,20 @@
 import java.io.*;
 import java.net.*;
 
+/**
+ * La classe Connection estende Thread, il server potrà gestire più connessioni
+ */
 public class Connection extends Thread{
     private Socket clientSocket;
     private BufferedReader in =null;
     private PrintWriter out=null;
     private GestoreDati dati;
 
+    /**
+     * Il costruttore istanzia il socket per permettere la comunicazione con il client
+     * @param client
+     * @param dati
+     */
     public Connection(Socket client, GestoreDati dati){
         this.dati= dati;
         this.clientSocket = client;
@@ -23,6 +31,10 @@ public class Connection extends Thread{
 
     }
 
+    /**
+     * Viene eseguita l'operazione scelta dall'utente
+     * (ogni scelta corrisponde ad un codice che a sua volta corrisponde ad un metodo della classe GestoreDati)
+     */
     @Override
     public void run(){
         int scelta = 0;
@@ -82,8 +94,11 @@ public class Connection extends Thread{
         }
     }
 
+    /**
+     * Chiusura del socket una colta terminata la comunicazione
+     */
     public void chiudi(){
-        System.out.println("chiuso");
+        System.out.println("Connesione chiusa");
         try {
             clientSocket.close();
             in.close();
