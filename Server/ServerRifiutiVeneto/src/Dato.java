@@ -1,9 +1,20 @@
+/**
+ * La classe dato permette di memorizzare in maniera strutturata una riga del file csv
+ * Implemento l'interfaccia Comparable in modo da poter comparare due dati (e quindi poterli ordinare)
+ */
 public class Dato implements Comparable{
     private int anno;
     private String provincia;
     private String tipoRifiuto;
     private float quantità;
 
+    /**
+     *
+     * @param anno
+     * @param provincia
+     * @param tipoRifiuto
+     * @param quantità
+     */
     public Dato(int anno, String provincia, String tipoRifiuto, float quantità) {
         this.anno = anno;
         this.provincia = provincia;
@@ -49,6 +60,11 @@ public class Dato implements Comparable{
                 "Tipo rifiuto: " + tipoRifiuto + "quantità rifiuto:" + quantità;
     }
 
+    /**
+     * Compara due dati in base alla provincia
+     * @param o the object to be compared.
+     * @return
+     */
     @Override
     public int compareTo(Object o) {
         Dato dato = (Dato) o;
