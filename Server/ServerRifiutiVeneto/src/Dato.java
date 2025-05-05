@@ -9,7 +9,7 @@ public class Dato implements Comparable{
     private float quantità;
 
     /**
-     *
+     *Ogni parametro del metodo costruttore corrisponde ad una colonna del file csv
      * @param anno
      * @param provincia
      * @param tipoRifiuto
@@ -54,10 +54,14 @@ public class Dato implements Comparable{
         this.quantità = quantità;
     }
 
+    /**
+     * Restituisce tutte le informazioni relative al dato in una stringa che corrispondono ad una riga del file csv
+     * @return
+     */
     @Override
     public String toString() {
-        return "Dato anno: " + anno +"provincia: " + provincia + "\n\r" +
-                "Tipo rifiuto: " + tipoRifiuto + "quantità rifiuto:" + quantità;
+        return "<html><div style='text-align: center;'>Dato anno: " + anno +" provincia: " + provincia + "<br>" +
+                "Tipo rifiuto: " + tipoRifiuto + " quantità rifiuto: " + quantità+"</div></html>";
     }
 
     /**

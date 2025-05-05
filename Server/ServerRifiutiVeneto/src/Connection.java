@@ -54,7 +54,6 @@ public class Connection extends Thread{
                 case 1:
                     String rigaStr = in.readLine();
                     int nRiga = Integer.parseInt(rigaStr);
-                    System.out.println("Riga ricevuta dal client: " + nRiga);
                     out.println(dati.getRiga(nRiga));
                     break;
                 case 2:

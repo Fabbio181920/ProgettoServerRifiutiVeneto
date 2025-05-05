@@ -28,6 +28,8 @@ public class Bottone extends JButton {
                 connection.start();
             } catch (UnknownHostException ex) {
                 throw new RuntimeException(ex);
+            } catch(ConnectException ec){
+                System.out.println("Server spento");
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
