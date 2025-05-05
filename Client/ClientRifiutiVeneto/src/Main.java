@@ -20,7 +20,8 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Connessione al server in corso...");
         menù = new JFrame("Menù");
-        menù.setSize(1300, 600);
+        menù.setSize(1000, 400);
+        menù.setIconImage(new ImageIcon("Regione_Veneto.png").getImage());
         menù.setDefaultCloseOperation( WindowConstants.EXIT_ON_CLOSE);
         menù.setLayout(new BorderLayout());
         JLabel descrizione = new JLabel("Selezionare l'opzione", SwingConstants.CENTER);

@@ -29,8 +29,11 @@ public class GestoreDati {
                 }
                 count++;
             }
+            reader.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
+        }catch (NumberFormatException e){
+            System.out.println("Errore nella lettura del file");
         }
     }
 
@@ -42,8 +45,8 @@ public class GestoreDati {
      * @return riga del file (String)
      */
     public String getRiga(int riga){
-        if(riga <= (dati.size()-1) && riga > 0){
-            return dati.get(riga -1).toString();
+        if(riga <= dati.size() && riga >= 0){
+            return dati.get(riga-1).toString();
         }
         return "ERROR: riga non trovata";
     }
