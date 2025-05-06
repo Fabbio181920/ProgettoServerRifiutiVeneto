@@ -139,7 +139,6 @@ public class GestoreDati {
         for(Dato dato: dati){
             if(dato.getProvincia().equalsIgnoreCase(provincia)){
                 if(dato.getTipoRifiuto().equalsIgnoreCase(pericolosi)){
-                    System.out.println(iPericolosi);
                     iPericolosi += dato.getQuantità();
                 }else{
                     iSpeciali += dato.getQuantità();
